@@ -19,7 +19,7 @@ a {
 /* =============== LAYOUT PRINCIPAL (index.html) =============== */
 
 .instagram {
-    height: 100vh;
+    min-height: 100vh;   /* antes era height: 100vh */
     width: 100%;
     display: flex;
 }
@@ -205,8 +205,6 @@ a {
     color: inherit;
 }
 
-
-
 /* =============== TELA DE STORY (story_jotta.html) =============== */
 
 /* Logo Instagram no topo */
@@ -242,7 +240,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: flex-start;     /* story “encostado” no topo */
-    padding-top: 80px;           /* 🔥 distância abaixo do logo */
+    padding-top: 80px;           /* distância abaixo do logo */
     overflow: hidden;
 }
 
@@ -255,7 +253,6 @@ a {
     border-radius: 20px;
     z-index: 1;
 }
-
 
 /* =========================
    STORY EM TELA CHEIA MOBILE
@@ -281,7 +278,7 @@ a {
     .img-center video {
         width: 100vw;     /* ocupa toda a largura */
         height: 100vh;    /* ocupa toda a altura */
-        object-fit: cover; /* 🔥 preenche tudo, igual insta */
+        object-fit: cover; /* preenche tudo, igual insta */
         border-radius: 0; /* nada arredondado no mobile */
     }
 
@@ -300,5 +297,108 @@ a {
         font-size: 28px;
         z-index: 9999;
         cursor: pointer;
+    }
+}
+
+/* =============== RESPONSIVIDADE: TABLET (até 1024px) =============== */
+@media (max-width: 1024px) {
+
+    .instagram {
+        min-height: 100vh;
+    }
+
+    /* barra lateral mais estreita */
+    .left_bar {
+        width: 70px;
+        height: 100vh;
+    }
+
+    /* itens centralizados na esquerda */
+    .left_bar .items {
+        justify-content: center;
+    }
+
+    .left_bar .items span.material-symbols-outlined {
+        margin: 0 auto;
+    }
+
+    /* feed ocupa mais espaço, sugestões somem */
+    .post {
+        width: calc(100% - 70px);
+        height: auto;
+    }
+
+    .suggestion_section {
+        display: none;
+    }
+
+    .post .main_post {
+        width: 90%;
+    }
+}
+
+/* =============== RESPONSIVIDADE: CELULAR (até 768px) =============== */
+@media (max-width: 768px) {
+
+    .instagram {
+        flex-direction: column;
+    }
+
+    /* barra lateral vira bottom nav */
+    .left_bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        width: 100%;
+        border-right: none;
+        border-top: 1px solid #504949;
+        display: flex;
+        background-color: #000;
+        z-index: 999;
+        overflow-x: auto;
+    }
+
+    /* itens lado a lado na barra inferior */
+    .left_bar .items {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        gap: 2px;
+        margin: 0;
+        flex: 1;
+        white-space: nowrap;
+    }
+
+    /* esconde o logo "Instagram" da barra lateral no mobile */
+    #logo {
+        display: none;
+    }
+
+    .left_bar .items .material-symbols-outlined {
+        font-size: 24px;
+    }
+
+    /* feed ocupa a tela toda, com espaço pro menu inferior */
+    .post {
+        width: 100%;
+        height: auto;
+        padding-bottom: 70px; /* espaço pro menu inferior */
+    }
+
+    .post .main_post {
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    .post .story {
+        margin-top: 10px;
+    }
+
+    /* some com a coluna de sugestões */
+    .suggestion_section {
+        display: none;
     }
 }
